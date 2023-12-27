@@ -73,6 +73,9 @@ public:
 	shared_ptr<DuckDBPyExpression> In(const py::args &args);
 	shared_ptr<DuckDBPyExpression> NotIn(const py::args &args);
 
+	// IS NULL
+	shared_ptr<DuckDBPyExpression> IsNull();
+
 	// Order modifiers
 
 	shared_ptr<DuckDBPyExpression> Ascending();

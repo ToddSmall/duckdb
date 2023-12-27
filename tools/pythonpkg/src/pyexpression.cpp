@@ -179,6 +179,11 @@ shared_ptr<DuckDBPyExpression> DuckDBPyExpression::NotIn(const py::args &args) {
 	return in_expr->Not();
 }
 
+// Is NULL
+shared_ptr<DuckDBPyExpression> DuckDBPyExpression::IsNull() {
+	return DuckDBPyExpression::InternalUnaryOperator(ExpressionType::OPERATOR_IS_NULL, *this);
+}
+
 // Order modifiers
 
 shared_ptr<DuckDBPyExpression> DuckDBPyExpression::Ascending() {

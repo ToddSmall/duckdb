@@ -314,6 +314,14 @@ void DuckDBPyExpression::Initialize(py::module_ &m) {
 	expression.def("isnotin", &DuckDBPyExpression::NotIn, docs);
 
 	docs = R"(
+		Return a IS NULL expression testing if self is null.
+
+		Returns:
+			DuckDBPyExpression: The IS NULL expression
+	)";
+	expression.def("isnull", &DuckDBPyExpression::IsNull, docs);
+
+	docs = R"(
 		Return the stringified version of the expression.
 
 		Returns:

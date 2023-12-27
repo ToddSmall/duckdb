@@ -366,6 +366,23 @@ class TestExpression(object):
         res = rel2.fetchall()
         assert res == [(True, False, True)]
 
+    def test_expression_is_null(self):
+        con = duckdb.connect()
+
+        rel = con.sql(
+            """
+            select
+                1 as a,
+                NULL as b
+        """
+        )
+
+        expr1 = ColumnExpression('a').isnull()
+        expr2 = ColumnExpression('b').isnull()
+        rel2 = rel.select(expr1, expr2)
+        res = rel2.fetchall()
+        assert res == [(False, True)]
+
     def test_expression_alias(self):
         con = duckdb.connect()
 
